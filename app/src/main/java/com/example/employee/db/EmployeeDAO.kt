@@ -12,4 +12,7 @@ interface EmployeeDAO {
 
     @Query("SELECT * FROM employees")
     fun getAllEmployees(): List<Employee>
+
+    @Query("DELETE FROM employees")
+    fun deleteAllEmployees()
 }

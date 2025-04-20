@@ -35,9 +35,7 @@ import com.example.employee.ui.sheet.VerticalSheet
 internal fun EmployeeContent(employee: Employee) {
     var showSheet by remember { mutableStateOf(false) }
     if (showSheet) {
-        VerticalSheet(
-            onClose = { showSheet = false }
-        )
+        VerticalSheet(onClose = { showSheet = false })
     }
 
     Surface(

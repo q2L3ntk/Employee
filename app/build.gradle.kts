@@ -74,6 +74,16 @@ dependencies {
     implementation("com.composables:core:1.11.2")
     implementation("com.composables:icons-lucide:1.0.0")
 
+    implementation("com.composables:composetheme:1.2.0-alpha")
+
+    // includes extensions for material 3 compose
+    implementation ("com.composables:composetheme-material3:1.2.0-alpha")
+
+    // includes extensions for material compose
+    implementation ("com.composables:composetheme-material:1.2.0-alpha")
+
+    implementation ("androidx.compose.ui:ui-tooling:1.3.3")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

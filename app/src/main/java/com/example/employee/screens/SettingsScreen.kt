@@ -69,8 +69,8 @@ fun SettingsScreen(
                 state = listState
             ) {
                 item { CategoryItem(title = "Учетная запись", icon = Icons.Outlined.AccountCircle, onClick = { viewModel.launchAccountScreen(activity) }) }
-                item { CategoryItem(title = "Приватность", icon = Icons.Outlined.Lock, onClick = { /*TODO*/ }) }
-                item { CategoryItem(title = "Уведомления", icon = Icons.Outlined.Notifications, onClick = { /*TODO*/ }) }
+                item { CategoryItem(title = "Приватность", icon = Icons.Outlined.Lock, onClick = { viewModel.launchPrivacyScreen(activity) }) }
+                item { CategoryItem(title = "Уведомления", icon = Icons.Outlined.Notifications, onClick = { viewModel.launchNotificationScreen(activity) }) }
                 item { CategoryItem(title = "Пожертвовать", icon = Icons.Rounded.FavoriteBorder, onClick = { /*TODO*/ }) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
                 item { CategoryItem(title = "FAQ", icon = Icons.Outlined.Info, onClick = { viewModel.launchFAQScreen(activity) }) }
