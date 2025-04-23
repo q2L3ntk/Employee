@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.HorizontalDivider
@@ -53,6 +54,8 @@ fun MenuContent(drawerState: DrawerState) {
                 modifier = Modifier.widthIn(max = 600.dp),
                 state = listState
             ) {
+                item { NewsContainer("Настройки приложения", "Реализованы основные функции настроек приложения.", Icons.Filled.Settings) }
+                item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
                 item { NewsContainer("Изменение цветовой палитры", "Изменена основная цветовая тема приложения", Icons.Filled.Star) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
                 item { NewsContainer("Настройки и общие сведения", "Теперь есть возможность настроить приложения и прочитать информацию о нём.", Icons.Filled.Home) }
