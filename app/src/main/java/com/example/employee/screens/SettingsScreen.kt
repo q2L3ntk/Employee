@@ -2,6 +2,8 @@ package com.example.employee.screens
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.example.employee.FAQActivity
 import com.example.employee.models.MenuViewModel
 import com.example.employee.ui.nav.AppBar
+import androidx.core.net.toUri
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -71,11 +74,11 @@ fun SettingsScreen(
                 item { CategoryItem(title = "Учетная запись", icon = Icons.Outlined.AccountCircle, onClick = { viewModel.launchAccountScreen(activity) }) }
                 item { CategoryItem(title = "Приватность", icon = Icons.Outlined.Lock, onClick = { viewModel.launchPrivacyScreen(activity) }) }
                 item { CategoryItem(title = "Уведомления", icon = Icons.Outlined.Notifications, onClick = { viewModel.launchNotificationScreen(activity) }) }
-                item { CategoryItem(title = "Пожертвовать", icon = Icons.Rounded.FavoriteBorder, onClick = { /*TODO*/ }) }
+                item { CategoryItem(title = "Пожертвовать", icon = Icons.Rounded.FavoriteBorder, onClick = { viewModel.openLink("https://t.me/andprik", activity) }) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
                 item { CategoryItem(title = "FAQ", icon = Icons.Outlined.Info, onClick = { viewModel.launchFAQScreen(activity) }) }
-                item { CategoryItem(title = "Обратная связь", icon = Icons.Outlined.Email, onClick = { /*TODO*/ }) }
-                item { CategoryItem(title = "Недавние обновления", icon = Icons.Outlined.DateRange, onClick = { /*TODO*/ }) }
+                item { CategoryItem(title = "Обратная связь", icon = Icons.Outlined.Email, onClick = { viewModel.openLink("https://t.me/andprik", activity) }) }
+                item { CategoryItem(title = "Недавние обновления", icon = Icons.Outlined.DateRange, onClick = { viewModel.openLink("https://t.me/andprik", activity) }) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
                 item { AppVersion(versionText = "Версия 0.0.1 ALPHA", copyrights = "© 2024 Employee Company", onClick = { /*TODO*/ }) }
             }
