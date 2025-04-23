@@ -150,7 +150,7 @@ fun MainNavigation(
                 NewEmployeeContent(dao = dao, drawerState = drawerState)
             }
             composable(MainRoute.About.name) {
-                AboutScreen(drawerState)
+                AboutScreen(drawerState, activity = activity, viewModel = viewModel)
             }
             composable(MainRoute.Settings.name) {
                 SettingsScreen(drawerState, activity = activity, viewModel = viewModel)

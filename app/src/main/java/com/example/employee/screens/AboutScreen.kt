@@ -1,6 +1,7 @@
 package com.example.employee.screens
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -24,11 +25,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.employee.models.MenuViewModel
 import com.example.employee.ui.nav.AppBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AboutScreen(drawerState: DrawerState) {
+fun AboutScreen(
+    drawerState: DrawerState,
+    activity: Activity,
+    viewModel: MenuViewModel
+) {
     val listState = rememberLazyListState()
     val hasScrolled by remember {
         derivedStateOf {
@@ -52,8 +58,8 @@ fun AboutScreen(drawerState: DrawerState) {
                 item { CategoryItem(title = "Лицензионное соглашение", icon = Icons.Outlined.CheckCircle, onClick = { /*TODO*/ }) }
                 item { CategoryItem(title = "База данных: Room v2.6.1", icon = Icons.Outlined.Warning, onClick = { /*TODO*/ }) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
-                item { CategoryItem(title = "Исходный код", icon = Icons.Outlined.Info, onClick = { /*TODO*/ }) }
-                item { CategoryItem(title = "Telegram", icon = Icons.AutoMirrored.Outlined.Send, onClick = { /*TODO*/ }) }
+                item { CategoryItem(title = "Исходный код", icon = Icons.Outlined.Info, onClick = { viewModel.openLink("https://github.com/q2L3ntk/Employee", activity) }) }
+                item { CategoryItem(title = "Telegram", icon = Icons.AutoMirrored.Outlined.Send, onClick = { viewModel.openLink("https://t.me/andprik", activity) }) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
                 item { AppDescription(
                     title = "Лицензия",

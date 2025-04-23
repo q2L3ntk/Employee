@@ -52,7 +52,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -62,28 +61,22 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.coil.compose)
-
     implementation("androidx.room:room-runtime:2.6.1")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-
     implementation("androidx.navigation:navigation-compose:2.5.3")
     implementation("com.composables:core:1.11.2")
     implementation("com.composables:icons-lucide:1.0.0")
-
     implementation("com.composables:composetheme:1.2.0-alpha")
-
     // includes extensions for material 3 compose
-    implementation ("com.composables:composetheme-material3:1.2.0-alpha")
-
+    implementation("com.composables:composetheme-material3:1.2.0-alpha")
     // includes extensions for material compose
-    implementation ("com.composables:composetheme-material:1.2.0-alpha")
-
-    implementation ("androidx.compose.ui:ui-tooling:1.3.3")
-
+    implementation("com.composables:composetheme-material:1.2.0-alpha")
+    implementation("androidx.compose.ui:ui-tooling:1.3.3")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
