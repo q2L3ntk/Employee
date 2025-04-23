@@ -37,14 +37,12 @@ import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.composables.composetheme.ComposeTheme
 import com.composables.composetheme.base
 import com.composables.composetheme.buildComposeTheme
 import com.composables.composetheme.colors
 import com.composables.composetheme.gray600
-import com.composables.composetheme.gray900
 import com.composables.composetheme.roundL
 import com.composables.composetheme.shapes
 import com.composables.composetheme.textStyles
@@ -166,9 +164,3 @@ fun WarningContent(onClose: () -> Unit, dao: EmployeeDAO) {
         }
     }
 }
-
-//@Preview
-//@Composable
-//fun WarningContentPreview() {
-//    WarningContent(onClose = { /*TODO*/ }, dao)
-//}
