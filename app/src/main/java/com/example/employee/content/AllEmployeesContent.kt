@@ -27,7 +27,7 @@ fun AllEmployeesContent(
         val allEmployees = remember { dao.getAllEmployees() }
         LazyColumn(modifier = Modifier.padding(innerPadding)) {
             itemsIndexed(allEmployees) { _, employee ->
-                EmployeeContent(employee = employee)
+                EmployeeContent(employee = employee, dao)
             }
         }
     }

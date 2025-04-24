@@ -12,8 +12,8 @@ import com.example.employee.MainActivity
 import com.example.employee.R
 
 class Notification(private val context: Context) {
-    private val channelId = "my_channel_id"
-    private val chanelName = "My Channel"
+    private val channelId = "notification_channel_id"
+    private val chanelName = "Notification Channel"
 
     init {
         createNotificationChannel()
@@ -31,9 +31,17 @@ class Notification(private val context: Context) {
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent?
+
+        if (SDK_INT >= VERSION_CODES.S) {
+            pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_MUTABLE)
+        } else {
+            pendingIntent = PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE)
+        }
+
         val notificationBuilder = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.mipmap.ic_icon_round)
             .setContentTitle(title)
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

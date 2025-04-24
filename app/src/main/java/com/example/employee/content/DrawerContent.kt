@@ -40,6 +40,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.employee.components.Notification
 import com.example.employee.db.EmployeeDAO
 import com.example.employee.models.MenuViewModel
 import com.example.employee.screens.AboutScreen
@@ -116,7 +117,8 @@ fun MainNavigation(
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
     dao: EmployeeDAO,
     activity: Activity,
-    viewModel: MenuViewModel
+    viewModel: MenuViewModel,
+    notification: Notification
 ) {
     ModalNavigationDrawer(
         modifier = Modifier.background(color = Color.DarkGray),
@@ -141,13 +143,13 @@ fun MainNavigation(
             modifier = Modifier.background(color = Color.DarkGray),
         ) {
             composable(MainRoute.Main.name) {
-                MenuContent(drawerState = drawerState)
+                MenuContent(drawerState = drawerState, notification = notification)
             }
             composable(MainRoute.All.name) {
                 AllEmployeesContent(dao = dao, drawerState = drawerState)
             }
             composable(MainRoute.New.name) {
-                NewEmployeeContent(dao = dao, drawerState = drawerState)
+                NewEmployeeContent(dao = dao, drawerState = drawerState, notification = notification)
             }
             composable(MainRoute.About.name) {
                 AboutScreen(drawerState, activity = activity, viewModel = viewModel)

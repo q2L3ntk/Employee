@@ -28,14 +28,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.employee.db.Employee
+import com.example.employee.db.EmployeeDAO
 import com.example.employee.ui.sheet.VerticalSheet
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-internal fun EmployeeContent(employee: Employee) {
+internal fun EmployeeContent(employee: Employee, dao: EmployeeDAO) {
     var showSheet by remember { mutableStateOf(false) }
     if (showSheet) {
-        VerticalSheet(onClose = { showSheet = false })
+        VerticalSheet(onClose = { showSheet = false }, employee = employee, dao = dao)
     }
 
     Surface(
@@ -76,12 +77,12 @@ internal fun EmployeeContent(employee: Employee) {
     }
 }
 
-@Preview
-@Composable
-private fun EmployeeContentPreview() {
-    EmployeeContent(
-        employee = Employee(
-            id = 1, name = "Иван", surname = "Иванов", photo = "", position = "Техник"
-        )
-    )
-}
+//@Preview
+//@Composable
+//private fun EmployeeContentPreview() {
+//    EmployeeContent(
+//        employee = Employee(
+//            id = 1, name = "Иван", surname = "Иванов", photo = "", position = "Техник"
+//        )
+//    )
+//}

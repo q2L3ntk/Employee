@@ -31,12 +31,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.employee.components.Notification
 import com.example.employee.ui.nav.AppBar
 
 @Composable
-fun MenuContent(drawerState: DrawerState) {
+fun MenuContent(drawerState: DrawerState, notification: Notification) {
     val listState = rememberLazyListState()
     val hasScrolled by remember {
         derivedStateOf {
@@ -54,17 +54,18 @@ fun MenuContent(drawerState: DrawerState) {
                 modifier = Modifier.widthIn(max = 600.dp),
                 state = listState
             ) {
-                item { NewsContainer("Настройки приложения", "Реализованы основные функции настроек приложения.", Icons.Filled.Settings) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
-                item { NewsContainer("Изменение цветовой палитры", "Изменена основная цветовая тема приложения", Icons.Filled.Star) }
+                item { NewsContainer("Настройки приложения", "Реализованы основные функции настроек приложения.", Icons.Filled.Settings, notification) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
-                item { NewsContainer("Настройки и общие сведения", "Теперь есть возможность настроить приложения и прочитать информацию о нём.", Icons.Filled.Home) }
+                item { NewsContainer("Изменение цветовой палитры", "Изменена основная цветовая тема приложения", Icons.Filled.Star, notification) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
-                item { NewsContainer("Реализация интерфейса в сотрудниках", "Добавлена возможность удаления/редактирования сотрудника", Icons.Filled.Face) }
+                item { NewsContainer("Настройки и общие сведения", "Теперь есть возможность настроить приложения и прочитать информацию о нём.", Icons.Filled.Home, notification) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
-                item { NewsContainer("Реализация контента по навигации", "Появилась возможность переходить к контенту приложения с помощью навигационной панели.", Icons.Filled.Build) }
+                item { NewsContainer("Реализация интерфейса в сотрудниках", "Добавлена возможность удаления/редактирования сотрудника", Icons.Filled.Face, notification) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
-                item { NewsContainer("0.0.1 Альфа релиз приложения", "Полноценная альфа версия приложения с функциями добавления и просмотра списка сотрудников.", Icons.Filled.Build) }
+                item { NewsContainer("Реализация контента по навигации", "Появилась возможность переходить к контенту приложения с помощью навигационной панели.", Icons.Filled.Build, notification) }
+                item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
+                item { NewsContainer("0.0.1 Альфа релиз приложения", "Полноценная альфа версия приложения с функциями добавления и просмотра списка сотрудников.", Icons.Filled.Build, notification) }
                 item { HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp)) }
             }
         }
@@ -72,9 +73,14 @@ fun MenuContent(drawerState: DrawerState) {
 }
 
 @Composable
-fun NewsContainer(title: String, description: String, image: ImageVector) {
+fun NewsContainer(
+    title: String,
+    description: String,
+    image: ImageVector,
+    onClick: Notification,
+) {
     Surface(
-        onClick = { /*TODO*/ },
+        onClick = { onClick.sendNotification(title, description) },
         shape = MaterialTheme.shapes.small,
         color = Color.Black
     ) {
@@ -108,8 +114,8 @@ fun NewsContainer(title: String, description: String, image: ImageVector) {
     }
 }
 
-@Preview
-@Composable
-fun NewsContainerPreview() {
-    NewsContainer("0.0.1 АЛЬФА РЕЛИЗ ПРИЛОЖЕНИЯ", "", Icons.Filled.Build)
-}
+//@Preview
+//@Composable
+//fun NewsContainerPreview() {
+//    NewsContainer("0.0.1 АЛЬФА РЕЛИЗ ПРИЛОЖЕНИЯ", "", Icons.Filled.Build)
+//}

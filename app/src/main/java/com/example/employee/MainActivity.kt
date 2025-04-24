@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
+import com.example.employee.components.Notification
 import com.example.employee.content.MainNavigation
 import com.example.employee.db.AppDatabase
 import com.example.employee.db.EmployeeDAO
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val notification = Notification(this)
         db = AppDatabase.getDatabase(this)
         dao = db.getEmployeeDao()
 
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainNavigation(dao = dao, activity = this, viewModel = viewModel)
+                    MainNavigation(dao = dao, activity = this, viewModel = viewModel, notification = notification)
                 }
             }
         }

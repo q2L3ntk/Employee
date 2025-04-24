@@ -9,5 +9,7 @@ data class Employee (
     val name: String,
     val surname: String,
     val photo: String? = null,
+    val dateBirth: String,
+    val group: String,
     val position: String,
 )

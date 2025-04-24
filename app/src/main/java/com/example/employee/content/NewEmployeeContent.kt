@@ -33,19 +33,24 @@ import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.employee.components.Notification
 import com.example.employee.db.Employee
 import com.example.employee.db.EmployeeDAO
 import com.example.employee.ui.nav.AppBar
 import com.example.employee.ui.theme.DarkViolet
+import java.util.Date
 
 @Composable
 internal fun NewEmployeeContent(
     dao: EmployeeDAO,
-    drawerState: DrawerState
+    drawerState: DrawerState,
+    notification: Notification
 ) {
     var nameField by remember { mutableStateOf("") }
     var surnameField by remember { mutableStateOf("") }
+    var dateBirthField by remember { mutableStateOf("") }
     var positionField by remember { mutableStateOf("") }
+    var groupField by remember { mutableStateOf("") }
 
     Scaffold(
         topBar = { AppBar(drawerState = drawerState, title = "Новый сотрудник") },
@@ -113,6 +118,22 @@ internal fun NewEmployeeContent(
                 supportingText = { Text(text = "Фамилия сотрудника", color = Color.White) }
             )
             TextField(
+                value = dateBirthField,
+                onValueChange = { newtText -> dateBirthField = newtText },
+                modifier = Modifier
+                    .width(width = 300.dp)
+                    .padding(top = 12.dp),
+                singleLine = true,
+                shape = MaterialTheme.shapes.medium,
+                colors = TextFieldDefaults.colors(
+                    disabledTextColor = Transparent,
+                    focusedIndicatorColor = Transparent,
+                    unfocusedIndicatorColor = Transparent,
+                    disabledIndicatorColor = Transparent
+                ),
+                supportingText = { Text(text = "Дата рождения", color = Color.White) }
+            )
+            TextField(
                 value = positionField,
                 onValueChange = { newtText -> positionField = newtText },
                 modifier = Modifier
@@ -128,13 +149,32 @@ internal fun NewEmployeeContent(
                 ),
                 supportingText = { Text(text = "Должность сотрудника", color = Color.White) }
             )
+            TextField(
+                value = groupField,
+                onValueChange = { newtText -> groupField = newtText },
+                modifier = Modifier
+                    .width(width = 300.dp)
+                    .padding(top = 12.dp),
+                singleLine = true,
+                shape = MaterialTheme.shapes.medium,
+                colors = TextFieldDefaults.colors(
+                    disabledTextColor = Transparent,
+                    focusedIndicatorColor = Transparent,
+                    unfocusedIndicatorColor = Transparent,
+                    disabledIndicatorColor = Transparent
+                ),
+                supportingText = { Text(text = "Подразделение", color = Color.White) }
+            )
             Button(
                 onClick = {
-                    val newEmployee = Employee(name = nameField, surname = surnameField, position = positionField)
+                    val newEmployee = Employee(name = nameField, surname = surnameField, dateBirth = dateBirthField, position = positionField, group = groupField)
                     dao.insert(newEmployee)
+                    notification.sendNotification("Новый сотрудник добавлен", "Сотрудник ${nameField} ${surnameField} успешно добавлен в базу")
                     nameField = ""
                     surnameField = ""
                     positionField = ""
+                    dateBirthField = ""
+                    groupField = ""
                 },
                 modifier = Modifier
                     .width(300.dp)
