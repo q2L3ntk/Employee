@@ -38,7 +38,6 @@ import com.example.employee.db.Employee
 import com.example.employee.db.EmployeeDAO
 import com.example.employee.ui.nav.AppBar
 import com.example.employee.ui.theme.DarkViolet
-import java.util.Date
 
 @Composable
 internal fun NewEmployeeContent(
@@ -178,7 +177,7 @@ internal fun NewEmployeeContent(
                 },
                 modifier = Modifier
                     .width(300.dp)
-                    .padding(top = 12.dp),
+                    .padding(top = 12.dp, bottom = 12.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = DarkViolet),
                 shape = MaterialTheme.shapes.medium
             ) {
